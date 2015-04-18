@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.authors = ["kaspernj"]
   s.date = "2015-04-18"
-  s.description = "TODO: longer description of your gem"
+  s.description = "Migrations support for the Baza database framework in Ruby."
   s.email = "k@spernj.org"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "baza_migrations.gemspec",
     "lib/baza_migrations.rb",
     "lib/baza_migrations/commands.rb",
     "lib/baza_migrations/commands/add_index.rb",
@@ -45,7 +46,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/kaspernj/baza_migrations"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.4.0"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Migrations support for the Baza database framework in Ruby."
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
