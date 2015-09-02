@@ -7,7 +7,13 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require "rspec"
 require "baza_migrations"
 require "tmpdir"
-require "sqlite3"
+
+if RUBY_PLATFORM == "java"
+  require "jdbc/sqlite3"
+  ::Jdbc::SQLite3.load_driver
+else
+  require "sqlite3"
+end
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

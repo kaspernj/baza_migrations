@@ -8,7 +8,7 @@ class BazaMigrations::Commands::RemoveColumn < BazaMigrations::Commands::Base
     sqls = []
     db_type = db.opts.fetch(:type)
 
-    if db_type == :sqlite3
+    if db_type.to_s.include?("sqlite3")
       sqls << proc {
         table = db.tables[@table_name]
 
