@@ -95,6 +95,7 @@ DEPENDENCIES
   baza (~> 0.0.19)
   bundler (~> 1.0)
   codeclimate-test-reporter
+  jdbc-sqlite3
   jeweler (~> 2.0.1)
   pry
   rdoc (~> 3.12)
