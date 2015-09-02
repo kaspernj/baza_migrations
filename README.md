@@ -20,4 +20,3 @@ Migrations support for the Baza database framework in Ruby.
 
 Copyright (c) 2015 kaspernj. See LICENSE.txt for
 further details.
-

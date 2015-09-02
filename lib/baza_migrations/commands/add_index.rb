@@ -20,7 +20,7 @@ class BazaMigrations::Commands::AddIndex < BazaMigrations::Commands::Base
   end
 
   def changed_rollback_sql
-    ["DROP INDEX IF EXISTS `#{@db.esc_col(index_name)}`"]
+    ["DROP INDEX `#{@db.esc_col(index_name)}`"]
   end
 
 private

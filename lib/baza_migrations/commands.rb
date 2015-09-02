@@ -7,4 +7,5 @@ class BazaMigrations::Commands
   autoload :DropTable, "#{path}/drop_table"
   autoload :AddColumn, "#{path}/add_column"
   autoload :RemoveColumn, "#{path}/remove_column"
+  autoload :RemoveIndex, "#{path}/remove_index"
 end

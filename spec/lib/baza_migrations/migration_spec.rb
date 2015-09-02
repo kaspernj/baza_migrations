@@ -4,7 +4,7 @@ describe BazaMigrations::Migration do
   let(:db) do
     file_path = "#{Dir.tmpdir}/baza_migrations.sqlite3"
     File.unlink(file_path) if File.exists?(file_path)
-    Baza::Db.new(type: :sqlite3, path: file_path)
+    Baza::Db.new(type: :sqlite3, path: file_path, debug: false)
   end
 
   let(:change_migration) do
@@ -27,6 +27,9 @@ describe BazaMigrations::Migration do
 
     table = db.tables[:test_table]
     table.name.should eq :test_table
+
+    age_column = table.column(:age)
+    age_column.type.should eq :int
   end
 
   it "#down" do
@@ -36,9 +39,9 @@ describe BazaMigrations::Migration do
     table.name.should eq :test_table
 
     up_down_migration.migrate(:down)
-    db.tables.instance_variable_set(:@list, Wref_map.new) # Resets cache
+    db.tables.instance_variable_set(:@list, Wref::Map.new) # Resets cache
 
-    expect { db.tables[:test_table] }.to raise_error
+    expect { db.tables[:test_table] }.to raise_error(Errno::ENOENT)
   end
 
   describe "#change" do
@@ -53,10 +56,12 @@ describe BazaMigrations::Migration do
       table = db.tables[:table]
       table.name.should eq :table
 
-      change_migration.migrate(:down)
-      db.tables.instance_variable_set(:@list, Wref_map.new) # Resets cache
+      expect(table.columns.length).to eq 6
 
-      expect { db.tables[:table] }.to raise_error
+      change_migration.migrate(:down)
+      db.tables.instance_variable_set(:@list, Wref::Map.new) # Resets cache
+
+      expect { db.tables[:table] }.to raise_error(Errno::ENOENT)
     end
   end
 end
