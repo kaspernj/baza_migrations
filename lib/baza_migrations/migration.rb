@@ -1,6 +1,6 @@
 class BazaMigrations::Migration
   def initialize(args = {})
-    @db = args[:db]
+    @db = args.fetch(:db)
     raise "No database was given" unless @db
 
     @changes = []
@@ -66,6 +66,10 @@ private
 
   def add_column(table_name, column_name, type, args = {})
     @changes << new_command(:AddColumn, table_name, column_name, type, args)
+  end
+
+  def belongs_to
+    @changes << new_command(:BelongsTo, table_name, column_name, type, args)
   end
 
 protected

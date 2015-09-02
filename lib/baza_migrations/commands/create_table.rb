@@ -10,6 +10,10 @@ class BazaMigrations::Commands::CreateTable < BazaMigrations::Commands::Base
     @columns << {name: name, type: :string, null: true}
   end
 
+  def integer(name)
+    @columns << {name: name, type: :int, null: true}
+  end
+
   def timestamps
     @columns << {name: :created_at, type: :datetime, null: true}
     @columns << {name: :updated_at, type: :datetime, null: true}

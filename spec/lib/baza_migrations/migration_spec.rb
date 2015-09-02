@@ -27,6 +27,9 @@ describe BazaMigrations::Migration do
 
     table = db.tables[:test_table]
     table.name.should eq :test_table
+
+    age_column = table.column(:age)
+    age_column.type.should eq :int
   end
 
   it "#down" do
