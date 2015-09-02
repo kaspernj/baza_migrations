@@ -1,18 +1,14 @@
-PATH
-  remote: /home/kaspernj/Dev/Ruby/baza
+GEM
+  remote: http://rubygems.org/
   specs:
+    addressable (2.3.7)
+    array_enumerator (0.0.10)
     baza (0.0.19)
       array_enumerator (~> 0.0.10)
       datet (~> 0.0.25)
       event_handler (~> 0.0.0)
       string-cases (~> 0.0.1)
       wref (~> 0.0.8)
-
-GEM
-  remote: http://rubygems.org/
-  specs:
-    addressable (2.3.7)
-    array_enumerator (0.0.10)
     builder (3.2.2)
     codeclimate-test-reporter (0.4.6)
       simplecov (>= 0.7.1, < 1.0.0)
@@ -96,7 +92,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  baza!
+  baza (~> 0.0.19)
   bundler (~> 1.0)
   codeclimate-test-reporter
   jeweler (~> 2.0.1)
@@ -105,6 +101,7 @@ DEPENDENCIES
   rspec (~> 3.3.0)
   sqlite3
   string-cases (~> 0.0.1)
+  wref (= 0.0.8)
 
 BUNDLED WITH
    1.10.5

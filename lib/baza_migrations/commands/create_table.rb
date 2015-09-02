@@ -19,6 +19,10 @@ class BazaMigrations::Commands::CreateTable < BazaMigrations::Commands::Base
     @columns << {name: :updated_at, type: :datetime, null: true}
   end
 
+  def belongs_to(name)
+    @columns << {name: "#{name}_id", type: :int, null: true}
+  end
+
   def sql
     db.tables.create(@name, {columns: @columns}, {return_sql: true})
   end

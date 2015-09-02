@@ -6,6 +6,7 @@ class TestChangeMigration < BazaMigrations::Migration
       t.timestamps
     end
 
+    add_column :table, :email, :string
     add_index :table, :name
   end
 end

@@ -64,12 +64,8 @@ private
     @changes << new_command(:RemoveColumn, table_name, column_name)
   end
 
-  def add_column(table_name, column_name, type, args = {})
-    @changes << new_command(:AddColumn, table_name, column_name, type, args)
-  end
-
-  def belongs_to
-    @changes << new_command(:BelongsTo, table_name, column_name, type, args)
+  def add_column(table_name, column_name, type)
+    @changes << new_command(:AddColumn, table_name, column_name, type)
   end
 
 protected
@@ -77,21 +73,33 @@ protected
   def execute_changes
     @changes.each do |change|
       change.sql.each do |sql|
-        @db.q(sql)
+        if sql.is_a?(String)
+          @db.q(sql)
+        elsif sql.respond_to?(:call)
+          sql.call
+        else
+          raise "Didn't know what to do with: #{sql.class.name}"
+        end
       end
     end
   end
 
   def rollback_changed_changes
-    @changes.each do |change|
+    @changes.reverse.each do |change|
       change.changed_rollback_sql.each do |sql|
-        @db.q(sql)
+        if sql.is_a?(String)
+          @db.q(sql)
+        elsif sql.respond_to?(:call)
+          sql.call
+        else
+          raise "Didn't know what to do with: #{sql.class.name}"
+        end
       end
     end
   end
 
   def new_command(type, *args)
-    command = BazaMigrations::Commands.const_get(type, args).new(*args)
+    command = BazaMigrations::Commands.const_get(type).new(*args)
     command.db = @db
     command.table = @schema_migrations_table
 
