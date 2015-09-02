@@ -7,6 +7,7 @@ class TestChangeMigration < BazaMigrations::Migration
     end
 
     add_column :table, :email, :string
-    add_index :table, :name
+    add_index :table, :email
+    add_index :table, [:name, :email]
   end
 end

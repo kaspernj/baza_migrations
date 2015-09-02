@@ -60,12 +60,16 @@ private
     @changes << new_command(:AddIndex, name, columns)
   end
 
-  def remove_column(table_name, column_name)
-    @changes << new_command(:RemoveColumn, table_name, column_name)
+  def remove_index(table_name, index_name)
+    @changes << new_command(:RemoveIndex, table_name, index_name)
   end
 
   def add_column(table_name, column_name, type)
     @changes << new_command(:AddColumn, table_name, column_name, type)
+  end
+
+  def remove_column(table_name, column_name)
+    @changes << new_command(:RemoveColumn, table_name, column_name)
   end
 
 protected
