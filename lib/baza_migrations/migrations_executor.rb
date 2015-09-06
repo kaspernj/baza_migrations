@@ -46,9 +46,19 @@ class BazaMigrations::MigrationsExecutor
     ensure_schema_migrations_table
 
     ordered_migrations.each do |migration_data|
+      next if migration_already_executed?(migration_data)
+
       migration_data.fetch(:const).new(db: @db).migrate(:up)
 
       @db.insert(:baza_schema_migrations, version: migration_data.fetch(:time).strftime("%Y%m%d%H%M%S"))
+    end
+  end
+
+  def migration_already_executed?(migration_data)
+    if @db.single(:baza_schema_migrations, version: migration_data.fetch(:time).strftime("%Y%m%d%H%M%S"))
+      return true
+    else
+      return false
     end
   end
 

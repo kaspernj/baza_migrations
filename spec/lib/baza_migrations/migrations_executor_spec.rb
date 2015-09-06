@@ -6,6 +6,7 @@ describe BazaMigrations::MigrationsExecutor do
     File.unlink(file_path) if File.exists?(file_path)
     Baza::Db.new(type: :sqlite3, path: file_path)
   end
+
   let(:executor) { BazaMigrations::MigrationsExecutor.new(db: db) }
   let(:migrations) { executor.instance_variable_get(:@migrations) }
 
