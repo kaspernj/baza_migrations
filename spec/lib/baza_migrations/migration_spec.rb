@@ -24,11 +24,6 @@ describe BazaMigrations::Migration do
     TestExistsMethods.new(db: db)
   end
 
-  it "#check_schema_migrations_table" do
-    change_migration
-    db.tables[:schema_migrations].name.should eq :schema_migrations
-  end
-
   it "#up" do
     up_down_migration.migrate(:up)
 

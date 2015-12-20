@@ -71,21 +71,17 @@ private
   end
 
   def table_exists?(table_name)
-    begin
-      @db.tables[table_name]
-      return true
-    rescue Errno::ENOENT
-      return false
-    end
+    @db.tables[table_name]
+    return true
+  rescue Errno::ENOENT
+    return false
   end
 
   def column_exists?(table_name, column_name)
-    begin
-      @db.tables[table_name].column(column_name)
-      return true
-    rescue Errno::ENOENT
-      return false
-    end
+    @db.tables[table_name].column(column_name)
+    return true
+  rescue Errno::ENOENT
+    return false
   end
 
   def index_exists?(table_name, column_names)
