@@ -4,7 +4,7 @@ class BazaMigrations::Migrate
 
     paths.each do |path|
       migrations_path = "#{path}/db/baza_migrate"
-      next unless File.exists?(migrations_path)
+      next unless File.exist?(migrations_path)
 
       Dir.foreach(migrations_path) do |file|
         next unless file[-3, 3] == ".rb"
@@ -22,7 +22,7 @@ class BazaMigrations::Migrate
 
     migrations_found.sort! { |migration1, migration2| migration1[:file] <=> migration2[:file] }
 
-    return migrations_found
+    migrations_found
   end
 
   def execute_all_migrations(direction)
@@ -37,7 +37,7 @@ class BazaMigrations::Migrate
     Enumerator.new do |yielder|
       yielder << Dir.pwd
 
-      Gem.loaded_specs.each do |name, loaded_spec|
+      Gem.loaded_specs.each do |_name, loaded_spec|
         yielder << loaded_spec.gem_dir
       end
     end

@@ -66,23 +66,21 @@ class BazaMigrations::MigrationsExecutor
     return if schema_migrations_table_exist?
 
     @db.tables.create(:baza_schema_migrations,
-      columns: [
-        {name: :version, type: :varchar}
-      ],
-      indexes: [
-        {name: :index_version, columns: [:version], unique: true}
-      ]
+                      columns: [
+                        {name: :version, type: :varchar}
+                      ],
+                      indexes: [
+                        {name: :index_version, columns: [:version], unique: true}
+                      ]
     )
   end
 
 private
 
   def schema_migrations_table_exist?
-    begin
-      @db.tables[:baza_schema_migrations]
-      return true
-    rescue Errno::ENOENT
-      return false
-    end
+    @db.tables[:baza_schema_migrations]
+    return true
+  rescue Errno::ENOENT
+    return false
   end
 end

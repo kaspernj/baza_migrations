@@ -24,7 +24,7 @@ class BazaMigrations::Commands::CreateTable < BazaMigrations::Commands::Base
   end
 
   def sql
-    db.tables.create(@name, {columns: @columns}, {return_sql: true})
+    db.tables.create(@name, {columns: @columns}, return_sql: true)
   end
 
   def changed_rollback_sql

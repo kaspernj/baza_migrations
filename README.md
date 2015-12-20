@@ -6,6 +6,14 @@
 
 Migrations support for the Baza database framework in Ruby.
 
+## Usage
+
+```ruby
+executor = BazaMigrations::MigrationsExecutor.new(db: db)
+executor.add_dir("spec/dummy/db/baza_migrate")
+executor.execute_migrations
+```
+
 ## Contributing to baza_migrations
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.

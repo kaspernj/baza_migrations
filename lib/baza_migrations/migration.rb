@@ -2,9 +2,7 @@ class BazaMigrations::Migration
   def initialize(args = {})
     @db = args.fetch(:db)
     raise "No database was given" unless @db
-
     @changes = []
-    check_schema_migrations_table
   end
 
   def change
@@ -89,7 +87,7 @@ protected
   end
 
   def rollback_changed_changes
-    @changes.reverse.each do |change|
+    @changes.reverse_each do |change|
       change.changed_rollback_sql.each do |sql|
         if sql.is_a?(String)
           @db.q(sql)
@@ -107,18 +105,6 @@ protected
     command.db = @db
     command.table = @schema_migrations_table
 
-    return command
-  end
-
-  def check_schema_migrations_table
-    begin
-      @schema_migrations_table = @db.tables[:schema_migrations]
-    rescue Errno::ENOENT
-      @db.tables.create(:schema_migrations,
-        columns: [{name: :version, type: :varchar}],
-        indexes: [:version]
-      )
-      @schema_migrations_table = @db.tables[:schema_migrations]
-    end
+    command
   end
 end

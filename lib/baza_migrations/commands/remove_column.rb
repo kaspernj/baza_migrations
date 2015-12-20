@@ -9,17 +9,17 @@ class BazaMigrations::Commands::RemoveColumn < BazaMigrations::Commands::Base
     db_type = db.opts.fetch(:type)
 
     if db_type.to_s.include?("sqlite3")
-      sqls << proc {
+      sqls << proc do
         table = db.tables[@table_name]
 
         column = table.column(@column_name)
         column.drop
-      }
+      end
     else
       sqls << "ALTER TABLE `#{@table_name}` DROP COLUMN `#{@column_name}`"
     end
 
-    return sqls
+    sqls
   end
 
   def changed_rollback_sql

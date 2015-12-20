@@ -27,7 +27,7 @@ private
 
   def columns_as_array
     return @columns if @columns.is_a?(Array)
-    return [@columns]
+    [@columns]
   end
 
   def index_name
@@ -40,6 +40,6 @@ private
       name << column.to_s
     end
 
-    return name
+    name
   end
 end

@@ -3,7 +3,7 @@ require "spec_helper"
 describe BazaMigrations::MigrationsExecutor do
   let(:db) do
     file_path = "#{Dir.tmpdir}/baza_migrations.sqlite3"
-    File.unlink(file_path) if File.exists?(file_path)
+    File.unlink(file_path) if File.exist?(file_path)
     Baza::Db.new(type: :sqlite3, path: file_path)
   end
 
@@ -17,8 +17,6 @@ describe BazaMigrations::MigrationsExecutor do
 
   it "#ordered_migrations" do
     executor.add_dir("spec/dummy/db/baza_migrate")
-    ordered_migrations = executor.ordered_migrations
-
     expect(migrations.first.fetch(:time).strftime("%H:%M")).to eq "16:05"
     expect(migrations[1].fetch(:time).strftime("%H:%M")).to eq "16:18"
   end

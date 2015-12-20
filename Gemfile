@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "baza", "~> 0.0.19" #path: "/Users/kaspernj/Dev/Ruby/baza"
+gem "baza", "~> 0.0.19" # path: "/Users/kaspernj/Dev/Ruby/baza"
 gem "string-cases", "~> 0.0.1"
 
 # Add dependencies to develop your gem here.
@@ -17,6 +17,8 @@ group :development do
   gem "jdbc-sqlite3", platform: :jruby
   gem "sqlite3", platform: :ruby
   gem "wref", "0.0.8"
+  gem "rubocop", require: false
+  gem "best_practice_project", require: false, github: "kaspernj/best_practice_project"
 end
 
 group :test do

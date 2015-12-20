@@ -14,17 +14,17 @@ class BazaMigrations::Commands::RemoveIndex < BazaMigrations::Commands::Base
     db_type = db.opts.fetch(:type)
 
     if db_type.to_s.include?("sqlite3")
-      sqls << proc {
+      sqls << proc do
         table = db.tables[@table_name]
 
         index = table.index(@index_name)
         index.drop
-      }
+      end
     else
       sqls << "DROP INDEX `#{@index_name}` ON `#{@table_name}`"
     end
 
-    return sqls
+    sqls
   end
 
   def changed_rollback_sql

@@ -3,9 +3,11 @@ require "spec_helper"
 describe BazaMigrations::Migration do
   let(:db) do
     file_path = "#{Dir.tmpdir}/baza_migrations.sqlite3"
-    File.unlink(file_path) if File.exists?(file_path)
+    File.unlink(file_path) if File.exist?(file_path)
     Baza::Db.new(type: :sqlite3, path: file_path, debug: false)
   end
+
+  let(:executor) { BazaMigrations::MigrationsExecutor.new(db: db) }
 
   let(:change_migration) do
     require "#{File.dirname(__FILE__)}/../../test_classes/201503041644_test_change_migration.rb"
