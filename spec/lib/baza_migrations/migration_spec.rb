@@ -19,6 +19,11 @@ describe BazaMigrations::Migration do
     TestUpDownMigration.new(db: db)
   end
 
+  let(:test_exists_migration) do
+    require "#{File.dirname(__FILE__)}/../../test_classes/201509101727_test_exists_methods.rb"
+    TestExistsMethods.new(db: db)
+  end
+
   it "#check_schema_migrations_table" do
     change_migration
     db.tables[:schema_migrations].name.should eq :schema_migrations
@@ -65,5 +70,10 @@ describe BazaMigrations::Migration do
 
       expect { db.tables[:table] }.to raise_error(Errno::ENOENT)
     end
+  end
+
+  it "#table_exists #column_exists" do
+    up_down_migration.migrate(:up)
+    test_exists_migration.migrate(:up) # Shouldn't raise anything
   end
 end

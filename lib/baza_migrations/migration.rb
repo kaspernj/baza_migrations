@@ -70,6 +70,36 @@ private
     @changes << new_command(:RemoveColumn, table_name, column_name)
   end
 
+  def table_exists?(table_name)
+    begin
+      @db.tables[table_name]
+      return true
+    rescue Errno::ENOENT
+      return false
+    end
+  end
+
+  def column_exists?(table_name, column_name)
+    begin
+      @db.tables[table_name].column(column_name)
+      return true
+    rescue Errno::ENOENT
+      return false
+    end
+  end
+
+  def index_exists?(table_name, column_names)
+    column_names = [column_names] unless column_names.is_a?(Array)
+    index_name = "index_#{table_name}_on_#{column_names.join("_and_")}"
+
+    begin
+      @db.tables[table_name].index(index_name)
+      return true
+    rescue Errno::ENOENT
+      return false
+    end
+  end
+
 protected
 
   def execute_changes
