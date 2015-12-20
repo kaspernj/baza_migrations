@@ -54,8 +54,8 @@ private
     @changes << new_command(:DropTable, name)
   end
 
-  def add_index(name, columns)
-    @changes << new_command(:AddIndex, name, columns)
+  def add_index(name, columns, args = {})
+    @changes << new_command(:AddIndex, name, columns, args)
   end
 
   def remove_index(table_name, index_name)

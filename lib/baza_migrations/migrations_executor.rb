@@ -42,13 +42,13 @@ class BazaMigrations::MigrationsExecutor
     end
   end
 
-  def execute_migrations
+  def execute_migrations(direction = :up)
     ensure_schema_migrations_table
 
     ordered_migrations.each do |migration_data|
       next if migration_already_executed?(migration_data)
 
-      migration_data.fetch(:const).new(db: @db).migrate(:up)
+      migration_data.fetch(:const).new(db: @db).migrate(direction)
 
       @db.insert(:baza_schema_migrations, version: migration_data.fetch(:time).strftime("%Y%m%d%H%M%S"))
     end

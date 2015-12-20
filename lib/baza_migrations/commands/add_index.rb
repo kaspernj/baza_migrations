@@ -1,11 +1,14 @@
 class BazaMigrations::Commands::AddIndex < BazaMigrations::Commands::Base
-  def initialize(table_name, columns)
+  def initialize(table_name, columns, args)
     @table_name = table_name
     @columns = columns
+    @args = args
   end
 
   def sql
-    sql = "CREATE INDEX `#{@db.esc_col(index_name)}` ON `#{@db.esc_table(@table_name)}` ("
+    sql = "CREATE"
+    sql << " UNIQUE" if @args[:unique]
+    sql << " INDEX `#{@db.esc_col(index_name)}` ON `#{@db.esc_table(@table_name)}` ("
 
     first = true
     columns_as_array.each do |column|
