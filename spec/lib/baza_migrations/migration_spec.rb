@@ -28,42 +28,42 @@ describe BazaMigrations::Migration do
     up_down_migration.migrate(:up)
 
     table = db.tables[:test_table]
-    table.name.should eq :test_table
+    expect(table.name).to eq "test_table"
 
     age_column = table.column(:age)
-    age_column.type.should eq :int
+    expect(age_column.type).to eq :int
   end
 
   it "#down" do
     up_down_migration.migrate(:up)
 
     table = db.tables[:test_table]
-    table.name.should eq :test_table
+    expect(table.name).to eq "test_table"
 
     up_down_migration.migrate(:down)
     db.tables.instance_variable_set(:@list, Wref::Map.new) # Resets cache
 
-    expect { db.tables[:test_table] }.to raise_error(Errno::ENOENT)
+    expect { db.tables[:test_table] }.to raise_error(Baza::Errors::TableNotFound)
   end
 
   describe "#change" do
     it "migrates" do
       change_migration.migrate(:up)
       table = db.tables[:table]
-      table.name.should eq :table
+      expect(table.name).to eq "table"
     end
 
     it "rolls back" do
       change_migration.migrate(:up)
       table = db.tables[:table]
-      table.name.should eq :table
+      expect(table.name).to eq "table"
 
       expect(table.columns.length).to eq 6
 
       change_migration.migrate(:down)
       db.tables.instance_variable_set(:@list, Wref::Map.new) # Resets cache
 
-      expect { db.tables[:table] }.to raise_error(Errno::ENOENT)
+      expect { db.tables[:table] }.to raise_error(Baza::Errors::TableNotFound)
     end
   end
 

@@ -42,13 +42,13 @@ class BazaMigrations::MigrationsExecutor
     end
   end
 
-  def execute_migrations
+  def execute_migrations(direction = :up)
     ensure_schema_migrations_table
 
     ordered_migrations.each do |migration_data|
       next if migration_already_executed?(migration_data)
 
-      migration_data.fetch(:const).new(db: @db).migrate(:up)
+      migration_data.fetch(:const).new(db: @db).migrate(direction)
 
       @db.insert(:baza_schema_migrations, version: migration_data.fetch(:time).strftime("%Y%m%d%H%M%S"))
     end
@@ -65,13 +65,14 @@ class BazaMigrations::MigrationsExecutor
   def ensure_schema_migrations_table
     return if schema_migrations_table_exist?
 
-    @db.tables.create(:baza_schema_migrations,
-                      columns: [
-                        {name: :version, type: :varchar}
-                      ],
-                      indexes: [
-                        {name: :index_version, columns: [:version], unique: true}
-                      ]
+    @db.tables.create(
+      :baza_schema_migrations,
+      columns: [
+        {name: :version, type: :varchar}
+      ],
+      indexes: [
+        {name: :index_version, columns: [:version], unique: true}
+      ]
     )
   end
 
@@ -80,7 +81,7 @@ private
   def schema_migrations_table_exist?
     @db.tables[:baza_schema_migrations]
     return true
-  rescue Errno::ENOENT
+  rescue Baza::Errors::TableNotFound
     return false
   end
 end

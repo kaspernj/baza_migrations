@@ -6,21 +6,29 @@ class BazaMigrations::Commands::CreateTable < BazaMigrations::Commands::Base
     @columns << {name: :id, type: :int, autoincr: true, primarykey: true}
   end
 
-  def string(name)
-    @columns << {name: name, type: :string, null: true}
+  def string(name, args = {})
+    @columns << {name: name, type: :string}.merge(default_args(args))
   end
 
-  def integer(name)
-    @columns << {name: name, type: :int, null: true}
+  def text(name, args = {})
+    @columns << {name: name, type: :text}.merge(default_args(args))
   end
 
-  def timestamps
-    @columns << {name: :created_at, type: :datetime, null: true}
-    @columns << {name: :updated_at, type: :datetime, null: true}
+  def integer(name, args = {})
+    @columns << {name: name, type: :int}.merge(default_args(args))
   end
 
-  def belongs_to(name)
-    @columns << {name: "#{name}_id", type: :int, null: true}
+  def timestamps(args = {})
+    @columns << {name: :created_at, type: :datetime}.merge(default_args(args))
+    @columns << {name: :updated_at, type: :datetime}.merge(default_args(args))
+  end
+
+  def belongs_to(name, args = {})
+    @columns << {name: "#{name}_id", type: :int, null: true}.merge(default_args(args))
+  end
+
+  def datetime(name, args = {})
+    @columns << {name: name, type: :datetime}.merge(default_args(args))
   end
 
   def sql

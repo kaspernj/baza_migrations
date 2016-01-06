@@ -1,36 +1,18 @@
 class BazaMigrations::Migrate
   def migrations
-    migrations_found = []
+    executor = BazaMigrations::MigrationsExecutor.new(db: Baza.default_db)
 
     paths.each do |path|
       migrations_path = "#{path}/db/baza_migrate"
       next unless File.exist?(migrations_path)
-
-      Dir.foreach(migrations_path) do |file|
-        next unless file[-3, 3] == ".rb"
-
-        match = file.match(/\A(\d+)_(.+)\.rb\Z/)
-        const_name = StringCases.snake_to_camel(match[2])
-
-        migrations_found << {
-          file: file,
-          const_name: const_name,
-          full_path: "#{migrations_path}/#{file}"
-        }
-      end
+      executor.add_dir(migrations_path)
     end
 
-    migrations_found.sort! { |migration1, migration2| migration1[:file] <=> migration2[:file] }
-
-    migrations_found
+    executor
   end
 
   def execute_all_migrations(direction)
-    migrations.each do |migration|
-      require migration[:full_path]
-      migrate_object = Object.const_get(migration[:const_name]).new(db: Baza.default_db)
-      migrate_object.migrate(direction)
-    end
+    migrations.execute_migrations(direction)
   end
 
   def paths
