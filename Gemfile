@@ -5,6 +5,7 @@ source "http://rubygems.org"
 
 gem "baza", "~> 0.0.19" # path: "/Users/kaspernj/Dev/Ruby/baza"
 gem "string-cases", "~> 0.0.1"
+gem "auto_autoloader"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

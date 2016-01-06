@@ -8,7 +8,7 @@ class BazaMigrations::Commands::AddIndex < BazaMigrations::Commands::Base
   def sql
     sql = "CREATE"
     sql << " UNIQUE" if @args[:unique]
-    sql << " INDEX `#{@db.esc_col(index_name)}` ON `#{@db.esc_table(@table_name)}` ("
+    sql << " INDEX `#{@db.escape_column(index_name)}` ON `#{@db.escape_table(@table_name)}` ("
 
     first = true
     columns_as_array.each do |column|
@@ -23,7 +23,7 @@ class BazaMigrations::Commands::AddIndex < BazaMigrations::Commands::Base
   end
 
   def changed_rollback_sql
-    ["DROP INDEX `#{@db.esc_col(index_name)}`"]
+    ["DROP INDEX `#{@db.escape_column(index_name)}`"]
   end
 
 private
