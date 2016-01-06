@@ -15,7 +15,7 @@ GEM
       parser (~> 2.2)
     auto_autoloader (0.0.1)
       string-cases
-    baza (0.0.19)
+    baza (0.0.20)
       array_enumerator (~> 0.0.10)
       datet (~> 0.0.25)
       event_handler (~> 0.0.0)
@@ -135,7 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   auto_autoloader
-  baza (~> 0.0.19)
+  baza (~> 0.0.20)
   best_practice_project!
   bundler (~> 1.0)
   codeclimate-test-reporter
