@@ -1,6 +1,6 @@
-[![Build Status](https://api.shippable.com/projects/54f837035ab6cc135292f855/badge?branchName=master)](https://app.shippable.com/projects/54f837035ab6cc135292f855/builds/latest)
 [![Code Climate](https://codeclimate.com/github/kaspernj/baza_migrations/badges/gpa.svg)](https://codeclimate.com/github/kaspernj/baza_migrations)
 [![Test Coverage](https://codeclimate.com/github/kaspernj/baza_migrations/badges/coverage.svg)](https://codeclimate.com/github/kaspernj/baza_migrations)
+[![Build Status](https://img.shields.io/shippable/54f837035ab6cc135292f855.svg)](https://app.shippable.com/projects/54f837035ab6cc135292f855/builds/latest)
 
 # baza_migrations
 
