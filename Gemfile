@@ -19,7 +19,7 @@ group :development do
   gem "sqlite3", platform: :ruby
   gem "wref", "0.0.8"
   gem "rubocop", require: false
-  gem "best_practice_project", require: false, github: "kaspernj/best_practice_project"
+  gem "best_practice_project", "0.0.10", require: false
 end
 
 group :test do
