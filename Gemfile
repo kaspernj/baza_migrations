@@ -14,7 +14,7 @@ group :development do
   gem "rspec", "~> 3.3.0"
   gem "rdoc", "~> 3.12"
   gem "bundler", "~> 1.0"
-  gem "jeweler", "~> 2.0.1"
+  gem "jeweler", "2.3.3"
   gem "jdbc-sqlite3", platform: :jruby
   gem "sqlite3", platform: :ruby
   gem "wref", "0.0.8"
