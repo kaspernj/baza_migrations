@@ -14,7 +14,7 @@ GEM
       simple_delegate (~> 0.0.2)
       string-cases (~> 0.0.4)
       wref (~> 0.0.8)
-    best_practice_project (0.0.10)
+    best_practice_project (0.0.11)
       auto_autoloader (>= 0.0.5)
     builder (3.2.3)
     coderay (1.1.2)
