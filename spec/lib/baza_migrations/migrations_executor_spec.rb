@@ -17,22 +17,24 @@ describe BazaMigrations::MigrationsExecutor do
 
   it "#ordered_migrations" do
     executor.add_dir("spec/dummy/db/baza_migrate")
+
+    migrations = executor.ordered_migrations
+
     expect(migrations.first.fetch(:time).strftime("%H:%M")).to eq "16:05"
     expect(migrations[1].fetch(:time).strftime("%H:%M")).to eq "16:18"
   end
 
   it "#ensure_schema_migrations_table" do
     executor.ensure_schema_migrations_table
-
     table = db.tables[:baza_schema_migrations]
-    expect(table).to_not eq nil
+    expect(table.name).to eq "baza_schema_migrations"
   end
 
   it "#execute_migrations" do
     executor.add_dir("spec/dummy/db/baza_migrate")
     executor.execute_migrations
 
-    expect(db.select(:baza_schema_migrations, version: "20150901160500").fetch).to_not eq nil
-    expect(db.select(:baza_schema_migrations, version: "20150901161800").fetch).to_not eq nil
+    expect(db.select(:baza_schema_migrations, version: "20150901160500").fetch).not_to eq nil
+    expect(db.select(:baza_schema_migrations, version: "20150901161800").fetch).not_to eq nil
   end
 end

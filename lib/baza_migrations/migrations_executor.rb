@@ -9,6 +9,7 @@ class BazaMigrations::MigrationsExecutor
 
     Dir.foreach(path) do |file|
       next unless file.end_with?(".rb")
+
       full_path = "#{path}/#{file}"
       add_file(full_path)
     end
@@ -56,9 +57,9 @@ class BazaMigrations::MigrationsExecutor
 
   def migration_already_executed?(migration_data)
     if @db.single(:baza_schema_migrations, version: migration_data.fetch(:time).strftime("%Y%m%d%H%M%S"))
-      return true
+      true
     else
-      return false
+      false
     end
   end
 
@@ -80,8 +81,8 @@ private
 
   def schema_migrations_table_exist?
     @db.tables[:baza_schema_migrations]
-    return true
+    true
   rescue Baza::Errors::TableNotFound
-    return false
+    false
   end
 end

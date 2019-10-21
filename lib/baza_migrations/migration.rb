@@ -2,6 +2,7 @@ class BazaMigrations::Migration
   def initialize(args = {})
     @db = args.fetch(:db)
     raise "No database was given" unless @db
+
     @changes = []
   end
 
@@ -72,16 +73,16 @@ private
 
   def table_exists?(table_name)
     @db.tables[table_name]
-    return true
+    true
   rescue Errno::ENOENT
-    return false
+    false
   end
 
   def column_exists?(table_name, column_name)
     @db.tables[table_name].column(column_name)
-    return true
+    true
   rescue Errno::ENOENT
-    return false
+    false
   end
 
   def index_exists?(table_name, column_names)

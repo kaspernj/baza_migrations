@@ -30,6 +30,7 @@ private
 
   def columns_as_array
     return @columns if @columns.is_a?(Array)
+
     [@columns]
   end
 
