@@ -131,20 +131,20 @@ PLATFORMS
 
 DEPENDENCIES
   auto_autoloader
-  baza (~> 0.0.20)
-  best_practice_project (= 0.0.10)
-  bundler (~> 1.0)
+  baza
+  best_practice_project
+  bundler
   jdbc-sqlite3
-  jeweler (= 2.3.3)
+  jeweler
   pry
-  rdoc (~> 3.12)
-  rspec (= 3.5.0)
+  rdoc
+  rspec
   rubocop
   rubocop-performance
   rubocop-rspec
   sqlite3
-  string-cases (~> 0.0.1)
-  wref (= 0.0.8)
+  string-cases
+  wref
 
 BUNDLED WITH
    1.17.3
