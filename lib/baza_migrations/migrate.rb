@@ -5,6 +5,7 @@ class BazaMigrations::Migrate
     paths.each do |path|
       migrations_path = "#{path}/db/baza_migrate"
       next unless File.exist?(migrations_path)
+
       executor.add_dir(migrations_path)
     end
 
