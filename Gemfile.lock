@@ -87,7 +87,7 @@ GEM
     psych (2.2.2-java)
       jar-dependencies (>= 0.1.7)
     public_suffix (2.0.5)
-    rack (2.0.1)
+    rack (2.0.7)
     rainbow (2.0.0)
     rake (12.0.0)
     rdoc (3.12.2)
