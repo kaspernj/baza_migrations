@@ -42,7 +42,7 @@ GEM
     hashie (3.4.6)
     highline (1.7.8)
     jar-dependencies (0.3.10)
-    jdbc-sqlite3 (3.8.10.1)
+    jdbc-sqlite3 (3.28.0)
     jeweler (2.3.3)
       builder
       bundler (>= 1.0)
