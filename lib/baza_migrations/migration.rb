@@ -91,9 +91,9 @@ private
 
     begin
       @db.tables[table_name].index(index_name)
-      return true
+      true
     rescue Errno::ENOENT
-      return false
+      false
     end
   end
 
