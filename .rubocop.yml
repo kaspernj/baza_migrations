@@ -7,6 +7,7 @@ AllCops:
     - node_modules/**/*
     - spec/dummy/db/schema.rb
     - baza_migrations.gemspec
+  NewCops: enable
 
 require:
   - rubocop-performance
@@ -44,6 +45,9 @@ Layout/SpaceInsideHashLiteralBraces:
 
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
+
+Lint/MissingSuper:
+  Enabled: false
 
 Metrics/AbcSize:
   Max: 25
