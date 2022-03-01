@@ -34,7 +34,7 @@ describe BazaMigrations::MigrationsExecutor do
     executor.add_dir("spec/dummy/db/baza_migrate")
     executor.execute_migrations
 
-    expect(db.select(:baza_schema_migrations, version: "20150901160500").fetch).not_to eq nil
-    expect(db.select(:baza_schema_migrations, version: "20150901161800").fetch).not_to eq nil
+    expect(db.select(:baza_schema_migrations, version: "20150901160500").fetch).not_to be_nil
+    expect(db.select(:baza_schema_migrations, version: "20150901161800").fetch).not_to be_nil
   end
 end
