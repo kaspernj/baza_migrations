@@ -126,7 +126,7 @@ GEM
     simple_delegate (0.0.2)
     spoon (0.0.6)
       ffi
-    sqlite3 (1.4.2)
+    sqlite3 (1.4.4)
     string-cases (0.0.4)
     stringio (3.0.1)
     thread_safe (0.3.6)
