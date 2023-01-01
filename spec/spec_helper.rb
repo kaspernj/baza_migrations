@@ -8,7 +8,7 @@ require "tmpdir"
 
 if RUBY_PLATFORM == "java"
   require "jdbc/sqlite3"
-  ::Jdbc::SQLite3.load_driver
+  Jdbc::SQLite3.load_driver
 else
   require "sqlite3"
 end
