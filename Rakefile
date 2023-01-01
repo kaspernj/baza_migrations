@@ -9,20 +9,6 @@ rescue Bundler::BundlerError => e
 end
 require "rake"
 
-require "jeweler"
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "baza_migrations"
-  gem.homepage = "http://github.com/kaspernj/baza_migrations"
-  gem.license = "MIT"
-  gem.summary = %(Migrations support for the Baza database framework in Ruby.)
-  gem.description = %(Migrations support for the Baza database framework in Ruby.)
-  gem.email = "k@spernj.org"
-  gem.authors = ["kaspernj"]
-  # dependencies defined in Gemfile
-end
-Jeweler::RubygemsDotOrgTasks.new
-
 require "rspec/core"
 require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec) do |spec|
