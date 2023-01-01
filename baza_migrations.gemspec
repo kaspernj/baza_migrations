@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<string-cases>.freeze, ["~> 0.0.1"])
   s.add_runtime_dependency(%q<auto_autoloader>.freeze, [">= 0"])
   s.add_development_dependency(%q<pry>.freeze, [">= 0"])
+  s.add_development_dependency "rake"
   s.add_development_dependency(%q<rspec>.freeze, ["= 3.5.0"])
   s.add_development_dependency "rdoc"
   s.add_development_dependency(%q<bundler>.freeze, ["2.3.4"])
