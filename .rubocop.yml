@@ -103,6 +103,9 @@ RSpec/NamedSubject:
 RSpec/NestedGroups:
   Enabled: false
 
+RSpec/NoExpectationExample:
+  Enabled: false
+
 Style/CaseLikeIf:
   Enabled: false
 
