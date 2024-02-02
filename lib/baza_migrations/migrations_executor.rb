@@ -23,7 +23,7 @@ class BazaMigrations::MigrationsExecutor
     class_name = StringCases.snake_to_camel(File.basename(match[2], File.extname(path)))
 
     add_migration(
-      class_name: class_name,
+      class_name:,
       const: Object.const_get(class_name),
       time: Time.parse(match[1])
     )

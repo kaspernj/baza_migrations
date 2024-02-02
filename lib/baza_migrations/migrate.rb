@@ -20,7 +20,7 @@ class BazaMigrations::Migrate
     Enumerator.new do |yielder|
       yielder << Dir.pwd
 
-      Gem.loaded_specs.each do |_name, loaded_spec|
+      Gem.loaded_specs.each_value do |loaded_spec|
         yielder << loaded_spec.gem_dir
       end
     end
