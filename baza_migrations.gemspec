@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency(%q<wref>.freeze, ["= 0.0.8"])
   s.add_development_dependency "rubocop", "1.60.2"
   s.add_development_dependency "rubocop-performance"
+  s.add_development_dependency "rubocop-rake"
   s.add_development_dependency "rubocop-rspec"
   s.add_development_dependency(%q<best_practice_project>.freeze, ["= 0.0.10"])
 end

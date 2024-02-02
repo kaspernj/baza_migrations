@@ -127,8 +127,8 @@ protected
     end
   end
 
-  def new_command(type, *args)
-    command = BazaMigrations::Commands.const_get(type).new(*args)
+  def new_command(type, *)
+    command = BazaMigrations::Commands.const_get(type).new(*)
     command.db = @db
     command.table = @schema_migrations_table
 

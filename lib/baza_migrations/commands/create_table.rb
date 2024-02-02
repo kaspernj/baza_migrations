@@ -7,15 +7,15 @@ class BazaMigrations::Commands::CreateTable < BazaMigrations::Commands::Base
   end
 
   def string(name, args = {})
-    @columns << {name: name, type: :string}.merge(default_args(args))
+    @columns << {name:, type: :string}.merge(default_args(args))
   end
 
   def text(name, args = {})
-    @columns << {name: name, type: :text}.merge(default_args(args))
+    @columns << {name:, type: :text}.merge(default_args(args))
   end
 
   def integer(name, args = {})
-    @columns << {name: name, type: :int}.merge(default_args(args))
+    @columns << {name:, type: :int}.merge(default_args(args))
   end
 
   def timestamps(args = {})
@@ -28,7 +28,7 @@ class BazaMigrations::Commands::CreateTable < BazaMigrations::Commands::Base
   end
 
   def datetime(name, args = {})
-    @columns << {name: name, type: :datetime}.merge(default_args(args))
+    @columns << {name:, type: :datetime}.merge(default_args(args))
   end
 
   def sql

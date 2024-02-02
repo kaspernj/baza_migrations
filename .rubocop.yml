@@ -8,9 +8,11 @@ AllCops:
     - spec/dummy/db/schema.rb
     - baza_migrations.gemspec
   NewCops: enable
+  TargetRubyVersion: 3.2.2
 
 require:
   - rubocop-performance
+  - rubocop-rake
   - rubocop-rspec
 
 Layout/AccessModifierIndentation:

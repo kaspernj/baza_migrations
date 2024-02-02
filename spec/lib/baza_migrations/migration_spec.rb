@@ -7,21 +7,21 @@ describe BazaMigrations::Migration do
     Baza::Db.new(type: :sqlite3, path: file_path, debug: false)
   end
 
-  let(:executor) { BazaMigrations::MigrationsExecutor.new(db: db) }
+  let(:executor) { BazaMigrations::MigrationsExecutor.new(db:) }
 
   let(:change_migration) do
     require "#{File.dirname(__FILE__)}/../../test_classes/201503041644_test_change_migration.rb"
-    TestChangeMigration.new(db: db)
+    TestChangeMigration.new(db:)
   end
 
   let(:up_down_migration) do
     require "#{File.dirname(__FILE__)}/../../test_classes/201503041646_test_up_down_migration.rb"
-    TestUpDownMigration.new(db: db)
+    TestUpDownMigration.new(db:)
   end
 
   let(:test_exists_migration) do
     require "#{File.dirname(__FILE__)}/../../test_classes/201509101727_test_exists_methods.rb"
-    TestExistsMethods.new(db: db)
+    TestExistsMethods.new(db:)
   end
 
   it "#up" do

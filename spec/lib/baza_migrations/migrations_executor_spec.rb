@@ -7,7 +7,7 @@ describe BazaMigrations::MigrationsExecutor do
     Baza::Db.new(type: :sqlite3, path: file_path)
   end
 
-  let(:executor) { BazaMigrations::MigrationsExecutor.new(db: db) }
+  let(:executor) { BazaMigrations::MigrationsExecutor.new(db:) }
   let(:migrations) { executor.instance_variable_get(:@migrations) }
 
   it "#add_dir" do
