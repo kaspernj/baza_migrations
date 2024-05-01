@@ -70,7 +70,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rubocop (1.62.1)
+    rubocop (1.63.4)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -122,7 +122,7 @@ DEPENDENCIES
   rake
   rdoc
   rspec (= 3.5.0)
-  rubocop (= 1.62.1)
+  rubocop (= 1.63.4)
   rubocop-performance
   rubocop-rake
   rubocop-rspec
