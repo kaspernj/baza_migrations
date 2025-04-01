@@ -10,7 +10,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     array_enumerator (0.0.10)
-    ast (2.4.2)
+    ast (2.4.3)
     auto_autoloader (0.0.5)
       string-cases
     baza (0.0.38)
@@ -32,14 +32,16 @@ GEM
     ffi (1.15.5-java)
     jar-dependencies (0.5.3)
     jdbc-sqlite3 (3.32.3.3)
-    json (2.9.1)
-    json (2.9.1-java)
+    json (2.10.2)
+    json (2.10.2-java)
     language_server-protocol (3.17.0.4)
+    lint_roller (1.1.0)
     method_source (1.0.0)
     parallel (1.26.3)
-    parser (3.3.7.0)
+    parser (3.3.7.4)
       ast (~> 2.4.1)
       racc
+    prism (1.4.0)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -73,18 +75,20 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rubocop (1.71.1)
+    rubocop (1.75.1)
       json (~> 2.3)
-      language_server-protocol (>= 3.17.0)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.1.0)
       parallel (~> 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      rubocop-ast (>= 1.43.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.0)
-      parser (>= 3.3.1.0)
+    rubocop-ast (1.43.0)
+      parser (>= 3.3.7.2)
+      prism (~> 1.4)
     rubocop-performance (1.23.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
@@ -117,7 +121,7 @@ DEPENDENCIES
   rake
   rdoc
   rspec (= 3.5.0)
-  rubocop (= 1.71.1)
+  rubocop (= 1.75.1)
   rubocop-performance
   rubocop-rake
   rubocop-rspec
