@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    baza_migrations (0.0.2)
+    baza_migrations (0.0.3)
       auto_autoloader
       baza (~> 0.0.20)
       string-cases (~> 0.0.1)
