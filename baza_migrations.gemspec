@@ -18,15 +18,15 @@ Gem::Specification.new do |s|
   s.rubygems_version = "2.6.8".freeze
   s.summary = "Migrations support for the Baza database framework in Ruby.".freeze
 
-  s.add_runtime_dependency("baza>.freeze, ["~" 0.0.20"])
-  s.add_runtime_dependency("string-cases>.freeze, ["~" 0.0.1"])
-  s.add_runtime_dependency("auto_autoloader>.freeze, [""= 0"])
-  s.add_development_dependency("pry>.freeze, [""= 0"])
+  s.add_runtime_dependency("baza".freeze, ["~> 0.0.20".freeze])
+  s.add_runtime_dependency("string-cases".freeze, ["~> 0.0.1".freeze])
+  s.add_runtime_dependency("auto_autoloader".freeze, [">= 0".freeze])
+  s.add_development_dependency("pry".freeze, [">= 0".freeze])
   s.add_development_dependency "rake"
   s.add_development_dependency("rspec".freeze, ["= 3.5.0"])
   s.add_development_dependency "rdoc"
   s.add_development_dependency("bundler".freeze, ["2.3.4"])
-  s.add_development_dependency("jdbc-sqlite3>.freeze, [""= 0"])
+  s.add_development_dependency("jdbc-sqlite3".freeze, [">= 0".freeze])
   s.add_development_dependency("sqlite3".freeze, ["1.4.4"])
   s.add_development_dependency("wref".freeze, ["= 0.0.8"])
   s.add_development_dependency "rubocop", "1.75.1"

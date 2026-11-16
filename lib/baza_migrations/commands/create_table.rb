@@ -32,7 +32,9 @@ class BazaMigrations::Commands::CreateTable < BazaMigrations::Commands::Base
   end
 
   def sql
-    db.tables.create(@name, columns: @columns, return_sql: true)
+    # baza >= 0.0.38 takes the table definition as `data` and options such as
+    # `return_sql` as a separate `args` hash.
+    db.tables.create(@name, {columns: @columns}, return_sql: true)
   end
 
   def changed_rollback_sql
